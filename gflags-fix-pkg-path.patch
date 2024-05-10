@@ -1,0 +1,11 @@
+--- gflags-2.2.2/cmake/config.cmake.in.orig	2020-01-23 16:39:27.695377454 +0200
++++ gflags-2.2.2/cmake/config.cmake.in	2020-01-23 16:40:13.677923157 +0200
+@@ -25,7 +25,7 @@
+ 
+ # installation prefix
+ get_filename_component (CMAKE_CURRENT_LIST_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+-get_filename_component (_INSTALL_PREFIX "${CMAKE_CURRENT_LIST_DIR}/@INSTALL_PREFIX_REL2CONFIG_DIR@" ABSOLUTE)
++set (_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX})
+ 
+ # include directory
+ #
