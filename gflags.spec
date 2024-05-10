@@ -1,10 +1,10 @@
 %define		major	2.2
-%define		libname	%mklibname %{name} %{major}
+%define		libname	%mklibname %{name}
 %define		devel	%mklibname %{name} -d
 
 Name:		gflags
 Version:	2.2.2
-Release:	%mkrel 5
+Release:	1
 Summary:	A C++ library that implements commandline flags processing
 Group:		Development/C++
 License:	BSD
@@ -23,7 +23,6 @@ and the ability to define flags in the source file in which they are used.
 %package -n	%{libname}
 Summary:	Libraries for %{name}
 Group:		System/Libraries
-Obsoletes:	%{_lib}%{name}2 < 2.2.1-2
 
 %description -n	%{libname}
 Libraries for %{name}
@@ -31,25 +30,22 @@ Libraries for %{name}
 %package -n	%{devel}
 Summary:	Development files for %{name}
 Group:		Development/C++
-Conflicts:	%{name} < 2.2.1-2
-Conflicts:	%{_lib}%{name}2 < 2.2.1-2
-Requires:	%{libname} = %{version}-%{release}
+Requires:	%{libname} = %{EVRD}
 
 %description -n	%{devel}
 Development files for %{name}
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %cmake \
 	-DBUILD_gflags_LIBS:BOOL=ON \
 	-DINSTALL_HEADERS:BOOL=ON
-%cmake_build
+%make_build
 
 %install
-%cmake_install
+%make_install -C build
 
 # Delete file in $HOME
 %{__rm} -rf %{buildroot}/${HOME}/.cmake/packages/%{name}
