@@ -3,14 +3,14 @@
 %define		devel	%mklibname %{name} -d
 
 Name:		gflags
-Version:	2.2.2
+Version:	2.3.1
 Release:	1
 Summary:	A C++ library that implements commandline flags processing
 Group:		Development/C++
 License:	BSD
 URL:		https://gflags.github.io/gflags/
 Source0:	https://github.com/gflags/gflags/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch1:		0001-Add-missing-to-cmake-file.patch
+# dropped (no longer applies): Patch1:		0001-Add-missing-to-cmake-file.patch
 Patch50:	gflags-fix-pkg-path.patch
 
 BuildRequires:	cmake
